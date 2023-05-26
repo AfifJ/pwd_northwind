@@ -24,8 +24,8 @@ halaman ketiga. */
 
   <div>OUTPUT</div>
   <?php
-  if (isset($_GET['c'])) {
-    $categoryID = $_GET['c'];
+  if (isset($_POST['produkID'])) {
+    $categoryID = $_POST['produkID'];
     $categoryName = $conn
       ->query("select CategoryName from categories where CategoryID = '$categoryID'")
       ->fetch_object()
@@ -36,7 +36,7 @@ halaman ketiga. */
     </div>
     <br>
 
-    <table border="1">
+    <table>
       <tr>
         <th>ID</th>
         <th>Name</th>

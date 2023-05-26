@@ -20,22 +20,22 @@ $response = "";
 
 <body>
   <h1>Product Category</h1>
-  <form method="get" action="<?= $_SERVER['PHP_SELF'] ?>">
-    <ul>
-      <?php
-      while ($result = $file->fetch_object()) {
-        ?>
-        <li>
-          <a href="second.php?c=<?= $result->CategoryID ?>">
-            <?= $result->CategoryName ?>
-          </a>
-        </li>
-        <br>
-        <?php
-      }
+  <ul>
+    <?php
+    while ($result = $file->fetch_object()) {
       ?>
-    </ul>
-  </form>
+      <li>
+        <form method="post" action="second.php">
+          <input type="hidden" name="produkID" id="produkID" value="<?= $result->CategoryID ?>">
+          <input type="submit" value="<?= $result->CategoryName ?>">
+          </a>
+        </form>
+      </li>
+      <br>
+      <?php
+    }
+    ?>
+  </ul>
 
 
 </body>
