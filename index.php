@@ -1,43 +1,21 @@
 <?php
-include "fun.php";
-$conn = nwconnect();
-$q = "select * from categories";
-$file = $conn->query($q);
+include "connect.php";
 
-$response = "";
-
-
+$q = "SELECT CategoryID, CategoryName FROM categories";
+$results = $conn->query($q);
 ?>
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="" rel="stylesheet" />
-  <title>Northwind</title>
-</head>
-
-<body>
-  <h1>Product Category</h1>
-  <ul>
-    <?php
-    while ($result = $file->fetch_object()) {
-      ?>
-      <li>
-        <form method="post" action="second.php">
-          <input type="hidden" name="produkID" id="produkID" value="<?= $result->CategoryID ?>">
-          <input type="submit" value="<?= $result->CategoryName ?>">
-          </a>
-        </form>
-      </li>
-      <br>
-      <?php
-    }
+<h1>Categories</h1>
+<?php
+if ($results->num_rows > 0) {
+  while ($result = $results->fetch_object()) {
     ?>
-  </ul>
+    <a href="listproduk.php?ci=<?= $result->CategoryID ?>">
+      <?= $result->CategoryName ?>
+    </a>
+    <br>
+    <br>
+    <?php
+  }
 
 
-</body>
-
-</html>
+}
