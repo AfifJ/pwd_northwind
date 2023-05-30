@@ -73,32 +73,34 @@ echo "isi : ";
   </tr>
   <?php
   $total = 0;
-  foreach ($_SESSION['shopcart'] as $element) {
+  if (isset($_SESSION['shopcart'])) {
+    foreach ($_SESSION['shopcart'] as $element) {
   ?>
-    <tr>
-      <td>
-        <?= $element->ProductID ?>
-      </td>
-      <td>
-        <?= $element->ProductName ?>
-      </td>
-      <td>
-        <?= $element->Quantity ?>
-      </td>
-      <td>
-        <?= number_format($element->UnitPrice, 2)." USD" ?>
-      </td>
-      <td>
-        <?= number_format($element->SubTotal, 2)." USD" ?>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          <?= $element->ProductID ?>
+        </td>
+        <td>
+          <?= $element->ProductName ?>
+        </td>
+        <td>
+          <?= $element->Quantity ?>
+        </td>
+        <td>
+          <?= number_format($element->UnitPrice, 2) . " USD" ?>
+        </td>
+        <td>
+          <?= number_format($element->SubTotal, 2) . " USD" ?>
+        </td>
+      </tr>
   <?php
-    $total += $element->SubTotal;
+      $total += $element->SubTotal;
+    }
   }
   ?>
   <tr>
     <td colspan="4">Total</td>
-    <td><?= number_format($total, 2)." USD" ?></td>
+    <td><?= number_format($total, 2) . " USD" ?></td>
   </tr>
 </table>
 <br>
