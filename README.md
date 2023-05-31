@@ -1,6 +1,6 @@
-### NorthWind Shopping Cart
+# NorthWind Shopping Cart
 
-#Cara membuka 
+## Cara membuka 
 1. Download semua file dalam saru folder
 2. Pindahkan folder ke folder server (ex: c:xampp/htdocs)
 3. Jalankan Apache, PHP, dan MySQL
